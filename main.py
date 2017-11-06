@@ -8,6 +8,7 @@ from zumo_button import ZumoButton
 
 from walk_in_the_park import WalkInThePark
 from halt_behavior import HaltBehavior
+from avoid_collision import AvoidCollision
 
 
 def main():
@@ -20,12 +21,16 @@ def main():
 
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
+    collision = AvoidCollision(bbcon=bbcon)
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
 
     bbcon.add_behavior(halting)
     bbcon.activate_behavior(halting)
+
+    bbcon.add_behavior(collision)
+    bbcon.activate_behavior(collision)
 
     time.sleep(0.1)
 
