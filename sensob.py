@@ -61,3 +61,15 @@ class EdgeDetector(Sensob):
         for value in sensor_data:
             if value == 0:
                 self.value = 0
+
+class MeasureDistance(Sensob):
+    """
+    return distance to object in front of the robot
+    """
+    def __init__(self):
+        us = Ultrasonic()
+        super().__init__([us])
+
+    def process_sensor_data(self, sensor_data):
+        self.value = sensor_data
+
