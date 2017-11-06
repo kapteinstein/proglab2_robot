@@ -17,7 +17,7 @@ class Arbitrator():
         best_behavior = None
         active_behaviors = self.bbcon.active_behaviors
         for behavior in active_behaviors:
-            if behavior.weight > highest_weight:
+            if behavior.weight >= highest_weight:
                 highest_weight = behavior.weight
                 best_behavior = behavior
         return (best_behavior.motor_recommandations, best_behavior.halt_request)
@@ -31,7 +31,7 @@ class Arbitrator():
         for behavior in active_behaviors:
             behavior_weights.append(total_weight + behavior.weight)
             total_weight += behavior.weight
-            
+
         R = round(random() * total_weight, 4)
 
         # Choose behavior
