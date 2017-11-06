@@ -12,7 +12,7 @@ class WalkInThePark(Behavior):
     """
 
     def __init__(self, bbcon = None, sensobs = []):
-        super(self.__init__(bbcon, sensob))
+        super().__init__(bbcon, sensobs)
 
     def consider_deactivation(self):
         pass
