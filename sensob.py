@@ -28,14 +28,28 @@ class Sensob(object):
 
 
 class Proximity(Sensob):
-
+    """
+    check if there is another object within 5cm in front or of the sides of
+    the robot. if that is the case, self.value is set to True
+    """
     def __init__(self):
         ir = IRProximitySensor()
         us = Ultrasonic()
         super().__init__([ir, us])
-    
+
     def process_sensor_data(self, sensor_data):
-        pass
+        ir_data = sensor_data[0]
+        us_data = sensor_data[1]
+
+        too_close = False
+        for measurement in ir_data:  # check left and right proximity sensor
+            if measurement == True:
+                too_close = True
+        if us_data < 5:  # closer than 5 cm in front
+            too_close = True
+
+        self.value = too_close
+
 
 class EdgeDetector(Sensob):
 
@@ -47,4 +61,3 @@ class EdgeDetector(Sensob):
         for value in sensor_data:
             if value == 0:
                 self.value = 0
-            
