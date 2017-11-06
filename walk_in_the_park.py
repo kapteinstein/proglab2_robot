@@ -5,6 +5,7 @@
 #
 
 from behavior import *
+import random
 
 class WalkInThePark(Behavior):
     """
