@@ -28,5 +28,5 @@ class AvoidCollision(Behavior):
 
     def sense_and_act(self):
         # higher match degree if object is closer
-        self.match_degree = abs(10 - self.sesobs[0].value) / 10
+        self.match_degree = abs(10 - self.sensobs[0].value) / 10
         self.motor_recommendations = [('TR', 180)]
