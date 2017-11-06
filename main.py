@@ -19,6 +19,7 @@ def main():
     arbitrator = Arbitrator()
     motob = Motob()
     distance_sensor = MeasureDistance()
+    distance_sensor.update()  # Force update
 
     bbcon = BBCON(arbitrator, [motob], [distance_sensor])
 
