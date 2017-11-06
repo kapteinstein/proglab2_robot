@@ -30,7 +30,7 @@ class Arbitrator():
             behavior_weights.append(total_weight + behavior.weight)
             total_weight += behavior.weight
 
-        R = round(random() * total_weight, 4)
+        R = round(random.random() * total_weight, 4)
 
         # Choose behavior
         for i in range(len(behavior_weights)):
