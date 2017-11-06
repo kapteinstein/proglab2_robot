@@ -2,7 +2,7 @@ from robodemo import *
 
 
 def main():
-    dancer()
+    tourist()
 
 
 if __name__ == '__main__':
