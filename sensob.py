@@ -68,7 +68,7 @@ class MeasureDistance(Sensob):
 
     def __init__(self):
         self.us = Ultrasonic()
-        super().__init__(sensors=[us])
+        super().__init__(sensors=[self.us])
 
     def process_sensor_data(self, sensor_data):
         self.value = sensor_data[0]
