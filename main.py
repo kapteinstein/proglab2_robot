@@ -5,7 +5,7 @@ from motobs import Motob
 from zumo_button import ZumoButton
 
 from walk_in_the_park import WalkInThePark
-from halt import HaltBehavior
+from halt_behavior import HaltBehavior
 
 
 def main():
