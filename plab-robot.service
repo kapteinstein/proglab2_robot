@@ -6,7 +6,8 @@ After=network.target network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/home/robot/proglab2_robot/
-ExecStartPre=-/usr/bin/git pull
+ExecStartPre=-/usr/bin/git fetch
+ExecStartPre=-/usr/bin/git reset --hard origin/master
 ExecStart=/usr/bin/python3 main.py
 
 [Install]
