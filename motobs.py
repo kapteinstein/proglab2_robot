@@ -20,11 +20,11 @@ class Motob:
             elif rec[0] == "L":
                 m.set_value([rec[1]*0.01*0.5,rec[1]*0.01], 3)
             elif rec[0] == "R":
-                m.set_value([[rec[1]*0.01],[rec[1]*0.01*0.5]], 3)
+                m.set_value([rec[1]*0.01,rec[1]*0.01*0.5], 3)
             elif rec[0] == "TL":
-                m.left(0.5, 5)
+                m.left(0.5, rec[1]/60)
             elif rec[0] == "TR":
-                m.right(0.5, 5)
+                m.right(0.5, rec[1]/60)
             elif rec[0] == "S":
                 m.stop()
 
