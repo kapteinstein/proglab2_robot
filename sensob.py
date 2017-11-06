@@ -71,5 +71,5 @@ class MeasureDistance(Sensob):
         super().__init__([us])
 
     def process_sensor_data(self, sensor_data):
-        self.value = sensor_data
+        self.value = sensor_data[0]
 
