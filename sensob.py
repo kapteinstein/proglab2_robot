@@ -1,19 +1,17 @@
 # sensob.py
-# 
+#
 # Sensor object, serves as an interface between one or more sensors and the BBCONs behaviors
 #
 # implementing sensob and its subclasses
-from irproximity_sensor import IRProximitySensor 
+from irproximity_sensor import IRProximitySensor
 from ultrasonic import Ultrasonic
 from reflectance_sensors import ReflectanceSensors
 
 
 class Sensob(object):
-
-    def __init__(self, sensors = []):
+    def __init__(self, sensors=[]):
         self.sensors = sensors
         self.value = None
-
 
     def update(self):
         sensor_data = []
@@ -23,7 +21,7 @@ class Sensob(object):
         return self.value
 
     # Process the sensor_data and set self.value depending on what kind of sensob
-    def process_sensor_data(self, sensor_data = []):
+    def process_sensor_data(self, sensor_data=[]):
         pass
 
 
@@ -32,6 +30,7 @@ class Proximity(Sensob):
     check if there is another object within 5cm in front or of the sides of
     the robot. if that is the case, self.value is set to True
     """
+
     def __init__(self):
         ir = IRProximitySensor()
         us = Ultrasonic()
@@ -52,7 +51,6 @@ class Proximity(Sensob):
 
 
 class EdgeDetector(Sensob):
-
     def __init__(self):
         rs = ReflectanceSensors()
         super().__init__(rs)
@@ -62,14 +60,15 @@ class EdgeDetector(Sensob):
             if value == 0:
                 self.value = 0
 
+
 class MeasureDistance(Sensob):
     """
     return distance to object in front of the robot
     """
+
     def __init__(self):
-        us = Ultrasonic()
-        super().__init__([us])
+        self.us = Ultrasonic()
+        super().__init__(sensors=[us])
 
     def process_sensor_data(self, sensor_data):
         self.value = sensor_data[0]
-

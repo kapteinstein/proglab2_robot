@@ -24,7 +24,7 @@ def main():
 
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
-    collision = AvoidCollision(bbcon=bbcon, sensobs = [distance_sensor])
+    collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
