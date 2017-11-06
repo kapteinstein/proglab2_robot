@@ -2,25 +2,25 @@ import random
 
 class Arbitrator():
 
-    def __init__(self, bbcon):
+    def __init__(self, bbcon = None):
         self.bbcon = bbcon
         
-    def choose_action(self, stochastic):
+    def choose_action(self, stochastic = False):
         if stochastic:
-            return self.choose_action_stochastic(self)
+            return self.choose_action_stochastic()
         else:
-            return self.choose_action_deterministic(self)
+            return self.choose_action_deterministic()
 
     # Chooses the behavior with the highest weight
     def choose_action_deterministic(self):
         highest_weight = 0
-        winning_behavior = None
+        best_behavior = None
         active_behaviors = self.bbcon.active_behaviors
         for behavior in active_behaviors:
             if behavior.weight > highest_weight:
                 highest_weight = behavior.weight
-                winning_behavior = behavior
-        return (winning_behavior.motor_recommandations, winning_behavior.halt_request)
+                best_behavior = behavior
+        return (best_behavior.motor_recommandations, best_behavior.halt_request)
             
 
     # Chooses the behavior stochasticitly
@@ -31,7 +31,8 @@ class Arbitrator():
         for behavior in active_behaviors:
             behavior_weights.append(total_weight + behavior.weight)
             total_weight += behavior.weight
-        R = random() * total_weight
+            
+        R = round(random() * total_weight, 4)
 
         # Choose behavior
         for i in range(len(behavior_weights)):
