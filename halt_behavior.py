@@ -14,7 +14,7 @@ class HaltBehavior(Behavior):
     """
 
     def __init__(self, bbcon=None, sensobs=[]):
-        slef.zumo_button = ZumoButton()
+        self.zumo_button = ZumoButton()
         self.halt_request = True
         self.motor_recommendations = []
         super().__init__(bbcon, sensobs)
