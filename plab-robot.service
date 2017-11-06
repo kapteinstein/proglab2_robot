@@ -1,0 +1,12 @@
+[Unit]
+Description=Plab robot gruppe 7
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/robot/proglab2_robot/
+ExecStartPre=-/usr/bin/git pull
+ExecStart=/usr/bin/python3 main.py
+
+[Install]
+WantedBy=multi-user.target
