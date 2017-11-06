@@ -1,3 +1,5 @@
+import time
+
 from robodemo import *
 from BBCON import BBCON
 from Arbitrator import Arbitrator
@@ -24,6 +26,8 @@ def main():
 
     bbcon.add_behavior(halting)
     bbcon.activate_behavior(halting)
+
+    time.sleep(0.1)
 
     while True:
         bbcon.run_one_timestep()

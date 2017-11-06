@@ -15,9 +15,9 @@ class HaltBehavior(Behavior):
 
     def __init__(self, bbcon=None, sensobs=[]):
         self.zumo_button = ZumoButton()
-        self.halt_request = True
         self.motor_recommendations = []
         super().__init__(bbcon, sensobs)
+        self.halt_request = True
 
     def consider_deactivation(self):
         pass
