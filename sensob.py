@@ -73,9 +73,9 @@ class MeasureDistance(Sensob):
 
     def process_sensor_data(self, sensor_data):
         self.value = sensor_data[0]
-        
-class IRSensob(Sensob):
+   
 
+class IRSensob(Sensob):
 
     def __init__(self):
         super(IRSensob, self).__init__()
