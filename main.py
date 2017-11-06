@@ -5,6 +5,7 @@ from BBCON import BBCON
 from Arbitrator import Arbitrator
 from motobs import Motob
 from zumo_button import ZumoButton
+from sensob import *
 
 from walk_in_the_park import WalkInThePark
 from halt_behavior import HaltBehavior
@@ -19,9 +20,11 @@ def main():
     motob = Motob()
     bbcon = BBCON(arbitrator, [motob], [])
 
+    distance_sensor = MeasureDistance()
+
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
-    collision = AvoidCollision(bbcon=bbcon)
+    collision = AvoidCollision(bbcon=bbcon, sensobs = [distance_sensor])
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
