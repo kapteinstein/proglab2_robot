@@ -18,9 +18,9 @@ def main():
     print("Button pressed...")
     arbitrator = Arbitrator()
     motob = Motob()
-    bbcon = BBCON(arbitrator, [motob], [])
-
     distance_sensor = MeasureDistance()
+
+    bbcon = BBCON(arbitrator, [motob], [distance_sensor])
 
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
