@@ -23,6 +23,5 @@ class WalkInThePark(Behavior):
 
     def sense_and_act(self):
         moves = [('L', 50), ("R", 50), ("TL", 50), ('TR', 50), ("F", 20), ("B", 20)]
-        for i in range(len(moves)):
-            self.motor_recommendations = moves[i]
+        self.motor_recommendations = random.choice(moves)
 
