@@ -20,6 +20,7 @@ class Sensob(object):
         for sensor in self.sensors:
             sensor_data.append(sensor.update())
         self.process_sensor_data(sensor_data)
+        return self.value
 
     # Process the sensor_data and set self.value depending on what kind of sensob
     def process_sensor_data(self, sensor_data = []):
@@ -34,4 +35,16 @@ class Proximity(Sensob):
         super().__init__([ir, us])
     
     def process_sensor_data(self, sensor_data):
-        right_left_
+        pass
+
+class EdgeDetector(Sensob):
+
+    def __init__(self):
+        rs = ReflectanceSensors()
+        super().__init__(rs)
+
+    def process_sensor_data(self, sensor_data):
+        for value in sensor_data:
+            if value == 0:
+                self.value = 0
+            
