@@ -5,6 +5,7 @@ from motobs import Motob
 from zumo_button import ZumoButton
 
 from walk_in_the_park import WalkInThePark
+from halt import HaltBehavior
 
 
 def main():
@@ -16,9 +17,13 @@ def main():
     bbcon = BBCON(arbitrator, [motob], [])
 
     parkWalk = WalkInThePark(bbcon=bbcon)
+    halting = HaltBehavior(bbcon=bbcon)
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
+
+    bbcon.add_behavior(halting)
+    bbcon.activate_behavior(halting)
 
     while True:
         bbcon.run_one_timestep()
