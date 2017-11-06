@@ -19,7 +19,7 @@ class Arbitrator():
             if behavior.weight >= highest_weight:
                 highest_weight = behavior.weight
                 best_behavior = behavior
-        return (best_behavior.motor_recommandations,
+        return (best_behavior.motor_recommendations,
                 best_behavior.halt_request)
 
     # Chooses the behavior stochasticitly

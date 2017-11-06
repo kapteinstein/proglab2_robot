@@ -25,8 +25,8 @@ class BBCON():
     def activate_behavior(self, behavior):
         if behavior not in self.behaviors:
             raise Exception("Behavior must be in behaviors to be activated")
-        self.activate_behavior.append(behavior)
-        active_behavior.consider_activate()
+        self.active_behaviors.append(behavior)
+        behavior.consider_activation()
 
     def deactivate_behavior(self, behavior):
         """

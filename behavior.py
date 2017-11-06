@@ -10,9 +10,9 @@ class Behavior(object):
     the basis for determining a motor request
     """
 
-    def __init__(self, bbcon = None, sensobs = [], active_flag = True):
+    def __init__(self, bbcon = None, sensobs = [], active_flag = True, priority=1):
         self.bbcon = bbcon
-        self.sensob = sensob
+        self.sensobs = sensobs
         self.motor_recommendations = []
         self.active_flag = active_flag
         self.halt_request = False
