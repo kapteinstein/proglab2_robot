@@ -6,6 +6,7 @@
 from irproximity_sensor import IRProximitySensor
 from ultrasonic import Ultrasonic
 from reflectance_sensors import ReflectanceSensors
+from irproximity_sensor import *
 
 
 class Sensob(object):
@@ -72,3 +73,42 @@ class MeasureDistance(Sensob):
 
     def process_sensor_data(self, sensor_data):
         self.value = sensor_data[0]
+        
+class IRSensob(Sensob):
+
+
+    def __init__(self):
+        super(IRSensob, self).__init__()
+        self.sensors.append(IRProximitySensor())
+
+    def update(self):
+        return
+
+
+class IRSensobLeft(IRSensob):
+
+    def __init__(self):
+        super(IRSensobLeft, self).__init__()
+        self.value = False
+
+    def update(self):
+        self.value = self.sensors[0].update()[0]
+        return self.value
+
+    def get_value(self):
+        return self.value
+
+
+class IRSensobRight(IRSensob):
+
+    def __init__(self):
+        super(IRSensobRight, self).__init__()
+        self.value = False
+
+    def update(self):
+        self.value = self.sensors[0].update()[1]
+        return self.value
+
+    def get_value(self):
+        return self.value
+
