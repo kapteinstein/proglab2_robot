@@ -12,7 +12,7 @@ class AvoidCollision(Behavior):
     turn around 180 deg if an object is close
     """
 
-    def __init__(self, bbcon=None, sensobs=[]):
+    def __init__(self, bbcon=None, sensobs=[], priority = 0.8):
         self.motor_recommendations = []
         super().__init__(bbcon, sensobs=sensobs)
 
