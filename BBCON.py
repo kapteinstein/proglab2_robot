@@ -56,6 +56,7 @@ class BBCON():
         boolean telling the program to halt
         """
         motor_re, halt = self.arbitrator.choose_action(self.active_behaviors)
+        print("Got motor requests: ", motor_re)
         return motor_re, halt
 
     def update_motobs(self, recommendations):
@@ -71,6 +72,7 @@ class BBCON():
         result, halt = self.get_result_action()
 
         if halt:
+            print("Got HALT request... Halting now")
             sys.exit(0)
 
         self.update_motobs(result)
