@@ -11,23 +11,25 @@ class Motob:
         self.operationalize()
 
     def operationalize(self):
+        m = Motors()
         for rec in self.value:
             if rec[0] == "F":
-                self.motors.forward(speed=rec[1]*0.01)
+                m.forward(rec[1]*0.01, 3)
             elif rec[0] == "B":
-                self.motors.backward(speed=rec[1]*0.01)
+                m.backward(rec[1]*0.01, 3)
             elif rec[0] == "L":
-                pass
+                m.set_value([[rec[1]*0.01*0.5],[rec[1]*0.01]], 3)
             elif rec[0] == "R":
-                pass
+                m.set_value([[rec[1]*0.01],[rec[1]*0.01*0.5]], 3)
             elif rec[0] == "TL":
-                self.motors.set_value([[rec[1]],[0]])
+                m.set_value([[0],[rec[1]]])
             elif rec[0] == "TR":
-                self.motors.set_value([[0],[rec[1]]])
+
+            elif rec[0] == "S":
+                m.stop()
 
 
 
 
     def turnDegrees(deg):
         return 0.0028 * deg #Så mye snur den visst
-
