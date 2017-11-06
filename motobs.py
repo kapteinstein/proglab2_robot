@@ -22,14 +22,8 @@ class Motob:
             elif rec[0] == "R":
                 m.set_value([[rec[1]*0.01],[rec[1]*0.01*0.5]], 3)
             elif rec[0] == "TL":
-                m.set_value([[0],[rec[1]]])
+                m.left(0.5, 5)
             elif rec[0] == "TR":
-
+                m.right(0.5, 5)
             elif rec[0] == "S":
                 m.stop()
-
-
-
-
-    def turnDegrees(deg):
-        return 0.0028 * deg #Så mye snur den visst
