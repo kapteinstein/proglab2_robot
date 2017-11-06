@@ -21,4 +21,4 @@ class WalkInThePark(Behavior):
         pass
 
     def sense_and_act(self):
-        self.motor_recommendations = [('L', 20), ("TL", 180)]
+        self.motor_recommendations = [('TL', 20), ("TL", 180)]
