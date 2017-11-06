@@ -20,6 +20,8 @@ class AvoidCollision(Behavior):
         # deactivate behavior if object is farther away than 10cm
         if self.sensobs[0].value > 10:
             self.active_flag = False
+            self.match_degree = 0
+            self.motor_recommendations = []
 
     def consider_activation(self):
         # activate behavior if object is closer than 10cm
