@@ -25,10 +25,10 @@ $ sudo systemct enable plab-robot # disable to disable autostart
 
 The robot will now fetch a new version every time it is booted with a connected ethernet cable. The `main.py` is also executed automatically.
 
-To see the status of the execution, run:
+To see the status of the execution (after latest boot), run:
 
 ```bash
-$ sudo systemctl status plab-robot
+$ sudo journalctl -u plab-robot -b
 ```
 
 To stop and start the execution run
