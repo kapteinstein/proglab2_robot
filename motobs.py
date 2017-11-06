@@ -10,21 +10,20 @@ class Motob:
         self.operationalize()
 
     def operationalize(self):
-        m = Motors()
         print("Value:", self.value)
         for rec in self.value:
             if rec[0] == "F":
-                m.forward(rec[1]*0.01, 3)
+                self.motors.forward(rec[1]*0.01, 3)
             elif rec[0] == "B":
-                m.backward(rec[1]*0.01, 3)
+                self.motors.backward(rec[1]*0.01, 3)
             elif rec[0] == "L":
-                m.set_value([rec[1]*0.01*0.0,rec[1]*0.01], 3)
+                self.motors.set_value([rec[1]*0.01*0.0,rec[1]*0.01], 3)
             elif rec[0] == "R":
-                m.set_value([rec[1]*0.01,rec[1]*0.01*0.0], 3)
+                self.motors.set_value([rec[1]*0.01,rec[1]*0.01*0.0], 3)
             elif rec[0] == "TL":
-                m.left(0.5, rec[1]/60)
+                self.motors.left(0.5, rec[1]/60)
             elif rec[0] == "TR":
-                m.right(0.5, rec[1]/60)
+                self.motors.right(0.5, rec[1]/60)
             elif rec[0] == "S":
-                m.stop()
+                self.motors.stop()
 
