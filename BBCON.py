@@ -55,7 +55,7 @@ class BBCON():
         Returns a tuple with motor recommendations for each motor, and a
         boolean telling the program to halt
         """
-        motor_re, halt = self.arbitrator.choose_action()
+        motor_re, halt = self.arbitrator.choose_action(self.active_behaviors)
         return motor_re, halt
 
     def update_motobs(self, recommendations):

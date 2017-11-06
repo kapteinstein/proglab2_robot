@@ -1,10 +1,9 @@
 import Motors
 
 class Motob:
-    def __init__(self, bbcon):
+    def __init__(self):
         self.motors = Motors()
         self.value = None
-        self.bbcon = bbcon
 
     def update(self, motorRec):
         self.value = motorRec
