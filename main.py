@@ -28,7 +28,7 @@ def main():
     sideDetect = DetectSide(bbcon = bbcon, sensobs = [ir_sensor])
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
-    # collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
+    collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
@@ -38,6 +38,9 @@ def main():
 
     bbcon.add_behavior(sideDetect)
     bbcon.activate_behavior(sideDetect)
+
+    bbcon.add_behavior(collision)
+    bbcon.activate_behavior(collision)
 
     time.sleep(0.1)
 
