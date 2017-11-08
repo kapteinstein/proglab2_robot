@@ -94,7 +94,7 @@ class Camob(Sensob):
         self.image_height = 96
         self.size = self.image_height * self.image_width
 
-        cam = Camera(self.img_width, self.img_height, img_rot=0)
+        cam = Camera(self.image_width, self.image_height, img_rot=0)
 
         # This defines "what" is counted as red
         self.upper = (256, 40, 40)
