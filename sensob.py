@@ -86,33 +86,6 @@ class IRSensob(Sensob):
         self.value = sensor_data[0]
 
 
-class IRSensobLeft(IRSensob):
-
-    def __init__(self):
-        super(IRSensobLeft, self).__init__()
-        self.value = False
-
-    def update(self):
-        self.value = self.sensors[0].update()[0]
-        return self.value
-
-    def get_value(self):
-        return self.value
-
-
-class IRSensobRight(IRSensob):
-
-    def __init__(self):
-        super(IRSensobRight, self).__init__()
-        self.value = False
-
-    def update(self):
-        self.value = self.sensors[0].update()[1]
-        return self.value
-
-    def get_value(self):
-        return self.value
-
 class Camob(Sensob):
 
     def __init__(self):
