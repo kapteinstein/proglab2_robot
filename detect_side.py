@@ -38,17 +38,17 @@ class DetectSide(Behavior):
         if sensor_tuple[0] == True and sensor_tuple[1] == False:
             self.match_degree_counter += 1
             self.match_degree = self.match_degree_counter * 0.5
-            self.motor_recommendations = [("R", 50)]
+            self.motor_recommendations = [("R", 25)]
         
         # Check if object to the right
         if sensor_tuple[0] == False and sensor_tuple[1] == True:
             self.match_degree_counter += 1
             self.match_degree = self.match_degree_counter * 0.5
-            self.motor_recommendations = [("L", 50)]
+            self.motor_recommendations = [("L", 25)]
         
         # If obstacle on both sides, drive straight
         if sensor_tuple[0] == True and sensor_tuple[1] == True:
             self.match_degree_counter += 1
             self.match_degree = self.match_degree_counter * 0.5
-            self.motor_recommendations = [("F", 5)]
+            self.motor_recommendations = [("F", 20)]
         

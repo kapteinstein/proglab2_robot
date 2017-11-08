@@ -8,6 +8,7 @@ from ultrasonic import Ultrasonic
 from reflectance_sensors import ReflectanceSensors
 from irproximity_sensor import *
 from camera import *
+from imager2 import Imager
 
 
 class Sensob(object):
@@ -89,17 +90,9 @@ class IRSensob(Sensob):
 class Camob(Sensob):
 
     def __init__(self):
-        super(Camob, self).__init__()
-        self.sensor = Camera()
-        self.sensors.append(self.sensor)
-
-    def update(self):
-
-        self.sensor.update()
-        self.value = self.sensor.get_value()
-
-        return self.value
-
-    def get_value(self):
-
-        return self.value
+        cam = Camera()
+        super().__init__([cam])
+        
+    def process_sensor_data(self, sensor_data):
+        im = Imager(image = sensor_data[0])
+        self.value = im
