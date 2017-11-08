@@ -74,17 +74,16 @@ class MeasureDistance(Sensob):
 
     def process_sensor_data(self, sensor_data):
         self.value = sensor_data[0]
-   
+
 
 class IRSensob(Sensob):
 
     def __init__(self):
-        super(IRSensob, self).__init__()
-        self.sensors.append(IRProximitySensor())
+        ir = IRProximitySensor()
+        super(IRSensob, self).__init__(sensors=[ir])
 
-    def update(self):
-        self.value = self.sensors[0].update()
-        return self.value
+    def process_sensor_data(self, sensor_data):
+        self.value = sensor_data[0]
 
 
 class IRSensobLeft(IRSensob):
