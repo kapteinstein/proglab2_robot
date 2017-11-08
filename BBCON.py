@@ -81,6 +81,7 @@ class BBCON():
 
         if halt:
             print("Got HALT request... Halting now")
+            motobs[0]
             sys.exit(0)
 
         self.update_motobs(result)

@@ -10,6 +10,9 @@ class Motob:
         self.value = [motorRec]
         self.operationalize()
 
+    def stop(self):
+        self.motors.stop()
+
     def operationalize(self):
         for rec in self.value:
             if rec[0] == "F":
