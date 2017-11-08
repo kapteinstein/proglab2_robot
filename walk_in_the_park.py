@@ -14,7 +14,7 @@ class WalkInThePark(Behavior):
     """
 
     def __init__(self, bbcon=None, sensobs=[], priority=0.2):
-        super().__init__(bbcon, sensobs)
+        super().__init__(bbcon, sensobs, priority = priority)
         self.match_degree = 0.5
 
     def consider_deactivation(self):
