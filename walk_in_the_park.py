@@ -14,7 +14,7 @@ class WalkInThePark(Behavior):
     """
 
     def __init__(self, bbcon=None, sensobs=[], priority=0.2):
-        super().__init__(bbcon, sensobs, priority = priority)
+        super().__init__(bbcon, sensobs, priority=priority)
         self.match_degree = 0.5
 
     def consider_deactivation(self):
@@ -25,6 +25,6 @@ class WalkInThePark(Behavior):
 
     def sense_and_act(self):
         moves = [("TL", 30), ('TR', 30), ("TL", 60), ('TR', 60),
-        ("F", 20) + [("B", 10), ("F", 40), ("B", 20)]
+                 ("F", 20) + ("B", 10), ("F", 40), ("B", 20)]
         moves_weight = []
         self.motor_recommendations = [random.choice(moves)]
