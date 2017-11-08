@@ -27,7 +27,7 @@ class DetectRed(Behavior):
     def sense_and_act(self):
         # higher match degree if object is closer
 
-        percent_red = self.sensobs[1].value
+        percent_red = self.sensobs[1].value or 0
 
         self.match_degree = max(percent_red * (
             self.trigger_dist - self.sensobs[0].value), 0) / self.trigger_dist
