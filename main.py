@@ -26,7 +26,7 @@ def main():
     ir_sensor = IRSensob()
     camera = Camob()
 
-    bbcon = BBCON(arbitrator, [motob], [distance_sensor, ir_sensor])
+    bbcon = BBCON(arbitrator, [motob], [distance_sensor, ir_sensor, camera])
 
     sideDetect = DetectSide(bbcon=bbcon, sensobs=[ir_sensor])
     parkWalk = WalkInThePark(bbcon=bbcon)
