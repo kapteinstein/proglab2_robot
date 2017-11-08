@@ -5,7 +5,7 @@ from behavior import *
 class DetectSide(Behavior):
 
     def __init__(self, bbcon = None, sensobs = [], priority = 0.8):
-        super().__init__(bbcon, sensobs = sensobs, priority)
+        super().__init__(bbcon, sensobs = sensobs, priority = priority)
         self.act_counter = 0
         self.deact_counter = 0
         self.match_degree_counter = 0
