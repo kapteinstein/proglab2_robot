@@ -112,4 +112,4 @@ class Camob(Sensob):
         ])
 
         self.value = count_red / self.size
-        print("Fooo... " + self.value)
+        print("Percent red...:", self.value)
