@@ -10,6 +10,7 @@ from sensob import *
 from walk_in_the_park import WalkInThePark
 from halt_behavior import HaltBehavior
 from avoid_collision import AvoidCollision
+from detect_side import DetectSide
 
 
 def main():
@@ -20,12 +21,14 @@ def main():
     motob = Motob()
     distance_sensor = MeasureDistance()
     distance_sensor.update()  # Force update
+    ir_sensor = IRSensob()
 
-    bbcon = BBCON(arbitrator, [motob], [distance_sensor])
+    bbcon = BBCON(arbitrator, [motob], [distance_sensor, ir_sensor])
 
+    sideDetect = DetectSide(bbcon = bbcon, sensobs = [ir_sensor])
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
-    collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
+    # collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
@@ -33,8 +36,8 @@ def main():
     bbcon.add_behavior(halting)
     bbcon.activate_behavior(halting)
 
-    bbcon.add_behavior(collision)
-    bbcon.activate_behavior(collision)
+    bbcon.add_behavior(sideDetect)
+    bbcon.activate_behavior(sideDetect)
 
     time.sleep(0.1)
 

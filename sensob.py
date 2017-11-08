@@ -82,7 +82,8 @@ class IRSensob(Sensob):
         self.sensors.append(IRProximitySensor())
 
     def update(self):
-        return
+        self.value = self.sensors[0].update()
+        return self.value
 
 
 class IRSensobLeft(IRSensob):
