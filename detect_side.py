@@ -19,6 +19,7 @@ class DetectSide(Behavior):
             self.match_degree = 0
             self.motor_recommendations = []
             self.deact_counter = 0
+            self.match_degree_counter = 0
         else:
             self.deact_counter +=1
         
@@ -30,12 +31,17 @@ class DetectSide(Behavior):
         else:
             self.act_counter += 1
     
+    # Runs when active
     def sense_and_act(self):
         sensor_tuple = self.sensobs[0].update()
+
+        # Check if object to the left
         if sensor_tuple[0] == True and sensor_tuple[1] == False:
             self.match_degree_counter += 1
             self.match_degree = self.match_degree_counter * 0.5
             self.motor_recommendations = [("R", 50)]
+        
+        # Check if object to the right
         if sensor_tuple[0] == False and sensor_tuple[1] == True:
             self.match_degree_counter += 1
             self.match_degree = self.match_degree_counter * 0.5
