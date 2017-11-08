@@ -98,7 +98,7 @@ class Camob(Sensob):
 
         # This defines "what" is counted as red
         self.upper = (256, 40, 40)
-        self.lower = (190, 0, 0)
+        self.lower = (50, 0, 0)
 
         super().__init__([cam])
 
@@ -110,6 +110,6 @@ class Camob(Sensob):
             if False not in map(operator.lt, self.lower, pixel)
             and False not in map(operator.gt, self.upper, pixel)
         ])
+        print("Count of red pixels: ", count_red)
 
         self.value = count_red / self.size
-        print("Percent red...:", self.value)

@@ -7,7 +7,7 @@ class DetectRed(Behavior):
     turn around 180 deg if an object is close
     """
 
-    def __init__(self, bbcon=None, sensobs=[], priority=0.8):
+    def __init__(self, bbcon=None, sensobs=[], priority=0.6):
         super().__init__(bbcon, sensobs=sensobs, priority=priority)
         self.trigger_dist = 30
         self.motor_recommendations = []
@@ -29,7 +29,6 @@ class DetectRed(Behavior):
 
         percent_red = self.sensobs[1].value or 0
 
-        self.match_degree = max(percent_red * (
-            self.trigger_dist - self.sensobs[0].value), 0) / self.trigger_dist
+        self.match_degree = max(percent_red / 5, 0)
 
-        self.motor_recommendations = [("F", 40)]
+        self.motor_recommendations = [("F", 100)]

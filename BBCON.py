@@ -75,7 +75,7 @@ class BBCON():
         if len(sys.argv) > 1 and sys.argv[1] == '-v':
             print("behaviors: ")
             for behavior in self.active_behaviors:
-                print("weight: {},\tmotor_rec: {}".format(
+                print("weight: {:.4f},\tmotor_rec: {}".format(
                     behavior.weight, behavior.motor_recommendations))
             print("--> action: {}".format(result))
 
