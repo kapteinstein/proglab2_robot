@@ -10,7 +10,6 @@ class Motob:
         self.operationalize()
 
     def operationalize(self):
-        print("Value:", self.value)
         for rec in self.value:
             if rec[0] == "F":
                 self.motors.forward(rec[1]*0.01, 3)

@@ -56,7 +56,6 @@ class BBCON():
         boolean telling the program to halt
         """
         motor_re, halt = self.arbitrator.choose_action(self.active_behaviors)
-        print("Got motor requests: ", motor_re)
         return motor_re, halt
 
     def update_motobs(self, recommendations):
@@ -70,6 +69,14 @@ class BBCON():
 
         # or does the arbitrator have the required fields?
         result, halt = self.get_result_action()
+
+        # enable some verbose logging
+        if len(sys.argv) > 1 and sys.argv[1] == '-v':
+            print("behaviors: ")
+            for behavior in self.active_behaviors:
+                print("weight: {},\tmotor_rec: {}".format(behavior.weight,
+                    behavior.motor_recommendations))
+            print("--> action: {}".format(result))
 
         if halt:
             print("Got HALT request... Halting now")

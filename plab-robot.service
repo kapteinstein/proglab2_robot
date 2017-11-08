@@ -9,7 +9,7 @@ Restart=always
 WorkingDirectory=/home/robot/proglab2_robot/
 ExecStartPre=-/usr/bin/git fetch
 ExecStartPre=-/usr/bin/git reset --hard origin/master
-ExecStart=/usr/bin/python3 main.py
+ExecStart=/usr/bin/python3 main.py -v
 
 [Install]
 WantedBy=multi-user.target
