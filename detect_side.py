@@ -24,7 +24,7 @@ class DetectSide(Behavior):
         
     # Behavior deactivated for 5 cycles
     def consider_activation(self):
-        if self.act_counter == 5:
+        if self.act_counter == 3:
             self.active_flag == True
             self.active_counter = 0
         else:
@@ -34,16 +34,16 @@ class DetectSide(Behavior):
         sensor_tuple = self.sensobs[0].update()
         if sensor_tuple[0] == True and sensor_tuple[1] == False:
             self.match_degree_counter += 1
-            self.match_degree = self.match_degree_counter * 0.3
+            self.match_degree = self.match_degree_counter * 0.5
             self.motor_recommendations = [("R", 50)]
         if sensor_tuple[0] == False and sensor_tuple[1] == True:
             self.match_degree_counter += 1
-            self.match_degree = self.match_degree_counter * 0.3
+            self.match_degree = self.match_degree_counter * 0.5
             self.motor_recommendations = [("L", 50)]
         
         # If obstacle on both sides, drive straight
         if sensor_tuple[0] == True and sensor_tuple[1] == True:
             self.match_degree_counter += 1
-            self.match_degree = self.match_degree_counter * 0.3
+            self.match_degree = self.match_degree_counter * 0.5
             self.motor_recommendations = [("F", 5)]
         
