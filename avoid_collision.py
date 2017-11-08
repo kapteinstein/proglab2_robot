@@ -34,4 +34,4 @@ class AvoidCollision(Behavior):
         self.match_degree = max((self.trigger_dist - self.sensobs[0].value),
                 0)/self.trigger_dist
         direction = random.choice(['TR', 'TL'])
-        self.motor_recommendations = [random.choice(direction, 180)]
+        self.motor_recommendations = [(direction, 180)]
