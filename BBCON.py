@@ -8,7 +8,8 @@ class BBCON():
             motobs,
             sensobs,
             behaviors=[],
-            active_behaviors=[], ):
+            active_behaviors=[],
+    ):
         self.arbitrator = arbitrator
         self.behaviors = behaviors
         for active_behavior in active_behaviors:
@@ -74,8 +75,8 @@ class BBCON():
         if len(sys.argv) > 1 and sys.argv[1] == '-v':
             print("behaviors: ")
             for behavior in self.active_behaviors:
-                print("weight: {},\tmotor_rec: {}".format(behavior.weight,
-                    behavior.motor_recommendations))
+                print("weight: {},\tmotor_rec: {}".format(
+                    behavior.weight, behavior.motor_recommendations))
             print("--> action: {}".format(result))
 
         if halt:

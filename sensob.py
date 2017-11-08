@@ -9,6 +9,8 @@ from reflectance_sensors import ReflectanceSensors
 from irproximity_sensor import *
 from camera import *
 from imager2 import Imager
+from PIL import Image
+import operator
 
 
 class Sensob(object):
@@ -78,7 +80,6 @@ class MeasureDistance(Sensob):
 
 
 class IRSensob(Sensob):
-
     def __init__(self):
         ir = IRProximitySensor()
         super(IRSensob, self).__init__(sensors=[ir])
@@ -88,11 +89,26 @@ class IRSensob(Sensob):
 
 
 class Camob(Sensob):
-
     def __init__(self):
-        cam = Camera()
+        self.image_width = 128
+        self.image_height = 96
+        self.size = self.image_height * self.image_width
+
+        cam = Camera(self.img_width, self.img_height, img_rot=0)
+
+        # This defines "what" is counted as red
+        self.upper = (256, 40, 40)
+        self.lower = (190, 0, 0)
+
         super().__init__([cam])
-        
+
     def process_sensor_data(self, sensor_data):
-        im = Imager(image = sensor_data[0])
-        self.value = im
+        img = sensor_data[0]
+
+        count_red = len([
+            str(pixel) for pixel in img.getdata()
+            if False not in map(operator.lt, self.lower, pixel)
+            and False not in map(operator.gt, self.upper, pixel)
+        ])
+
+        self.value = count_red / self.size

@@ -11,6 +11,7 @@ from walk_in_the_park import WalkInThePark
 from halt_behavior import HaltBehavior
 from avoid_collision import AvoidCollision
 from detect_side import DetectSide
+from detect_red_camera import DetectRed
 
 
 def main():
@@ -18,17 +19,20 @@ def main():
     ZumoButton().wait_for_press()
     print("Button pressed...")
     arbitrator = Arbitrator()
+
     motob = Motob()
     distance_sensor = MeasureDistance()
     distance_sensor.update()  # Force update
     ir_sensor = IRSensob()
+    camera = Camob()
 
     bbcon = BBCON(arbitrator, [motob], [distance_sensor, ir_sensor])
 
-    sideDetect = DetectSide(bbcon = bbcon, sensobs = [ir_sensor])
+    sideDetect = DetectSide(bbcon=bbcon, sensobs=[ir_sensor])
     parkWalk = WalkInThePark(bbcon=bbcon)
     halting = HaltBehavior(bbcon=bbcon)
     collision = AvoidCollision(bbcon=bbcon, sensobs=[distance_sensor])
+    detectRed = DetectRed(bbcon=bbcon, sensobs=[distance_sensor, camera])
 
     bbcon.add_behavior(parkWalk)
     bbcon.activate_behavior(parkWalk)
@@ -41,6 +45,9 @@ def main():
 
     bbcon.add_behavior(collision)
     bbcon.activate_behavior(collision)
+
+    bbcon.add_behavior(detectRed)
+    bbcon.activate_behavior(detectRed)
 
     time.sleep(0.1)
 
