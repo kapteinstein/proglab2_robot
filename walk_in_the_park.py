@@ -18,13 +18,22 @@ class WalkInThePark(Behavior):
         self.match_degree = 0.5
 
     def consider_deactivation(self):
+        # Always active, base behavior
         pass
 
     def consider_activation(self):
+        # Always active, base behavior
         pass
 
+    # Chooses move based on the weights in moves_weight
     def sense_and_act(self):
         moves = [("TL", 30), ('TR', 30), ("TL", 60), ('TR', 60),
                  ("F", 20) + ("B", 10), ("F", 40), ("B", 20)]
-        moves_weight = []
-        self.motor_recommendations = [random.choice(moves)]
+        moves_weight = [15,15,5,5,25,20,10,5]
+        total_weight = 100
+        R = round(random.random() * total_weight, 3)
+
+        for i in range(len(moves_weight)):
+            if R < moves_weight[i]:
+                self.motor_recommendations = [moves[i]]
+                break
