@@ -104,12 +104,16 @@ class Camob(Sensob):
 
     def process_sensor_data(self, sensor_data):
         img = sensor_data[0]
+        image = Imager(image=img)
 
-        count_red = len([
-            str(pixel) for pixel in img.getdata()
-            if False not in map(operator.lt, self.lower, pixel)
-            and False not in map(operator.gt, self.upper, pixel)
-        ])
+        image = image.map_color_wta()
+
+        count_red = 0
+
+        for pixel in image.image.getdata():
+            if pixel == (255, 0, 0):
+                count_red += 1
+
         print("Count of red pixels: ", count_red)
 
         self.value = count_red / self.size

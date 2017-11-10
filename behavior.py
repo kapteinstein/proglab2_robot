@@ -4,13 +4,14 @@
 # implementation of the behaviour class and its subclasses
 #
 
+
 class Behavior(object):
     """
     modular unit designed to analyze a subset of the sensory information as
     the basis for determining a motor request
     """
 
-    def __init__(self, bbcon = None, sensobs = [], active_flag = True, priority=1):
+    def __init__(self, bbcon=None, sensobs=[], active_flag=True, priority=1):
         self.bbcon = bbcon
         self.sensobs = sensobs
         self.motor_recommendations = []
