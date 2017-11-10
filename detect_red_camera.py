@@ -4,7 +4,7 @@ import random
 
 class DetectRed(Behavior):
     """
-    turn around 180 deg if an object is close
+    go back if red is detected
     """
 
     def __init__(self, bbcon=None, sensobs=[], priority=0.6):
@@ -30,6 +30,6 @@ class DetectRed(Behavior):
 
         percent_red = self.sensobs[1].value or 0
 
-        self.match_degree = max(percent_red / 5, 0)
+        self.match_degree = percent_red
 
-        self.motor_recommendations = [("F", 100)]
+        self.motor_recommendations = [("B", 100)]
