@@ -29,7 +29,7 @@ class WalkInThePark(Behavior):
     # Chooses move based on the weights in moves_weight
     def sense_and_act(self):
         moves = [("TL", 30), ('TR', 30), ("TL", 60), ('TR', 60),
-                 ("F", 20) + ("B", 10), ("F", 40), ("B", 20)]
+                 ("F", 20), ("B", 10), ("F", 40), ("B", 20)]
         moves_weight = [15,15,5,5,25,20,10,5]
         total_weight = 100
         R = round(random.random() * total_weight, 3)
