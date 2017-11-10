@@ -28,9 +28,8 @@ class WalkInThePark(Behavior):
 
     # Chooses move based on the weights in moves_weight
     def sense_and_act(self):
-        moves = [("TL", 30), ('TR', 30), ("L", 60), ('R', 60),
-                 ("F", 20), ("B", 10), ("F", 40), ("B", 20)]
-        moves_weight = [10,10,10,10,25,10,20,5]
+        moves = [('F', 20), ('L', 40), ('R', 40)]
+        moves_weight = [10, 3, 3]
         c_weight = []
         total_weight = 0
         for w in moves_weight:
