@@ -18,6 +18,7 @@ class HaltBehavior(Behavior):
         self.motor_recommendations = []
         super().__init__(bbcon, sensobs)
         self.halt_request = True
+        self.name = "halt"
 
     def consider_deactivation(self):
         pass

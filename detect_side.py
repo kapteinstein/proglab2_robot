@@ -9,6 +9,7 @@ class DetectSide(Behavior):
         self.act_counter = 0
         self.deact_counter = 0
         self.match_degree_counter = 0
+        self.name = "detect side"
 
 
     # Behavior active for 3 cycles

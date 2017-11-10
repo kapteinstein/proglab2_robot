@@ -11,6 +11,7 @@ class DetectRed(Behavior):
         super().__init__(bbcon, sensobs=sensobs, priority=priority)
         self.trigger_dist = 30
         self.motor_recommendations = []
+        self.name = "detect red"
 
     def consider_deactivation(self):
         # deactivate behavior if object is farther away than 10cm

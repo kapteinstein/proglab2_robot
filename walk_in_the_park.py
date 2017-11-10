@@ -16,6 +16,7 @@ class WalkInThePark(Behavior):
     def __init__(self, bbcon=None, sensobs=[], priority=0.2):
         super().__init__(bbcon, sensobs, priority=priority)
         self.match_degree = 0.5
+        self.name = "walk in the park"
 
     def consider_deactivation(self):
         # Always active, base behavior
