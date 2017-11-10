@@ -16,18 +16,18 @@ class Motob:
     def operationalize(self):
         for rec in self.value:
             if rec[0] == "F":
-                self.motors.forward(rec[1] * 0.01, 0.5)
+                self.motors.forward(rec[1] * 0.01, 1)
             elif rec[0] == "B":
-                self.motors.backward(rec[1] * 0.01, 0.5)
+                self.motors.backward(rec[1] * 0.01, 1)
             elif rec[0] == "L":
                 self.motors.set_value([rec[1] * 0.01 * 0.0, rec[1] * 0.01],
-                                      0.5)
+                                      1)
             elif rec[0] == "R":
                 self.motors.set_value([rec[1] * 0.01, rec[1] * 0.01 * 0.0],
-                                      0.5)
+                                      1)
             elif rec[0] == "TL":
-                self.motors.left(0.5, rec[1] / 60)
+                self.motors.left(0.5, rec[1] / 180)
             elif rec[0] == "TR":
-                self.motors.right(0.5, rec[1] / 60)
+                self.motors.right(0.5, rec[1] / 180)
             elif rec[0] == "S":
                 self.motors.stop()
