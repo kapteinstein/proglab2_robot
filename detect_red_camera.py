@@ -7,7 +7,7 @@ class DetectRed(Behavior):
     go back if red is detected
     """
 
-    def __init__(self, bbcon=None, sensobs=[], priority=0.6):
+    def __init__(self, bbcon=None, sensobs=[], priority=0.2):
         super().__init__(bbcon, sensobs=sensobs, priority=priority)
         self.trigger_dist = 30
         self.motor_recommendations = []
@@ -26,4 +26,4 @@ class DetectRed(Behavior):
 
         self.match_degree = percent_red
 
-        self.motor_recommendations = [("B", 100)]
+        self.motor_recommendations = [("B", 50)]
