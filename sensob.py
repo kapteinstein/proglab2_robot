@@ -110,15 +110,9 @@ class Camob(Sensob):
 
         count_red = 0
 
-        # for pixel in image.image.getdata():
-        #    if pixel == (255, 0, 0):
-        #        count_red += 1
-
-        count_red = len([
-            str(pixel) for pixel in image.image.getdata()
-            if False not in map(operator.lt, self.lower, pixel)
-            and False not in map(operator.gt, self.upper, pixel)
-        ])
+        for pixel in image.image.getdata():
+            if pixel[1] == 0 and pixel[2] == 0:
+                count_red += 1
 
         print("Count of red pixels: ", count_red)
 

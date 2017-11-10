@@ -14,16 +14,10 @@ class DetectRed(Behavior):
         self.name = "detect red"
 
     def consider_deactivation(self):
-        # deactivate behavior if object is farther away than 10cm
-        if self.sensobs[0].value > self.trigger_dist:
-            self.active_flag = False
-            self.match_degree = 0
-            self.motor_recommendations = []
+        pass
 
     def consider_activation(self):
-        # activate behavior if object is closer than 10cm
-        if self.sensobs[0].value < self.trigger_dist:
-            self.active_flag = True
+        pass
 
     def sense_and_act(self):
         # higher match degree if object is closer
