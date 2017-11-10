@@ -27,15 +27,16 @@ class Behavior(object):
         pass
 
     def update(self):
-        # TODO: change this when we know what is going on with reactivation
-
         # consider changing active_flag
         if self.active_flag:
             self.consider_deactivation()
-            self.sense_and_act()
-            self.weight = self.priority * self.match_degree
         else:
             self.consider_activation()
+
+        if self.active_flag:
+            self.sense_and_act()
+
+        self.weight = self.priority * self.match_degree
 
     def sense_and_act(self):
         pass
