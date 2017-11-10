@@ -28,13 +28,18 @@ class WalkInThePark(Behavior):
 
     # Chooses move based on the weights in moves_weight
     def sense_and_act(self):
-        moves = [("TL", 30), ('TR', 30), ("TL", 60), ('TR', 60),
+        moves = [("TL", 30), ('TR', 30), ("L", 60), ('R', 60),
                  ("F", 20), ("B", 10), ("F", 40), ("B", 20)]
-        moves_weight = [15,15,5,5,25,20,10,5]
-        total_weight = 100
+        moves_weight = [10,10,10,10,25,10,20,5]
+        c_weight = []
+        total_weight = 0
+        for w in moves_weight:
+            c_weight.append(total_weight + w)
+            total_weight += w
+
         R = round(random.random() * total_weight, 3)
 
         for i in range(len(moves_weight)):
-            if R < moves_weight[i]:
+            if R < c_weight[i]:
                 self.motor_recommendations = [moves[i]]
                 break
